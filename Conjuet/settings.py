@@ -128,5 +128,3 @@ LOGIN_REDIRECT_URL= 'profile/'
 
 EMAIL_HOST='localhost'
 EMAIL_PORT = 1025
-
-django_heroku.settings(locals())
