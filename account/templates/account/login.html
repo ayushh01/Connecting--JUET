@@ -28,24 +28,26 @@
         <p class="card-text">Enter your personal details<br/>and start journey with us</p>
         
         <p>or use your email for registration</p>
-        <form>
+        <form method="POST" action="/conjuet/register/">
+          {% csrf_token %}
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Name" required="required"/>
+            <input class="form-control" type="text" placeholder="Name" required="required"/ name="name">
           </div>
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Enrollment number" required="required"/>
+            <input class="form-control" type="text" placeholder="Enrollment number" required="required"/ name="enrollno">
           </div>
           <div class="form-group">
-            <input class="form-control" type="date" placeholder="DOB" required="required"/>
+            <input class="form-control" type="date" placeholder="DOB" required="required"/ name="dob">
           </div>
 
           <div class="form-group">
-            <input class="form-control" type="email" placeholder="Email" required="required"/>
+            <input class="form-control" type="email" placeholder="Email" required="required"/ name="email">
           </div>
           <div class="form-group">
-            <input class="form-control" type="password" placeholder="Password" required="required"/>
+            <input class="form-control" type="password" placeholder="Password" required="required"/ id="password" name="password">
           </div>
-          <button class="btn btn-lg">REGISTER</button>
+          <input hidden id="type" class="rtype">
+          <button class="btn btn-lg" type="submit" value="Post">REGISTER</button>
         </form>
       </div>
       <button class="btn btn-back js-btn" data-target="welcome"><i class="fas fa-angle-left"></i></button>
@@ -54,15 +56,16 @@
       <div class="card-body">
         <h2 class="card-title">Welcome</h2>
         <p>To keep connected with us<br/>please login with your personal info</p>
-        <form method="POST">
+        <form method="POST" action="/conjuet/login/">
           {% csrf_token %}
           <div class="form-group">
-            <input class="form-control"  placeholder="Enrollment number" required="required"/ name="username">
+            <input class="form-control" type="text" placeholder="Username" required="required" name="username"/>
           </div>
           <div class="form-group">
-            <input class="form-control" type="password" placeholder="Password" required="required"/ name="password">
+            <input class="form-control" type="password" placeholder="Password" required="required" name="password"/>
           </div>
-          <p><a href="forgot.html">Forgot your password?</a></p>
+          <input hidden id="type" class="ltype">
+          <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
           <button class="btn btn-lg" type="submit">LOGIN</button>
         </form>
       </div>
