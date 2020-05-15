@@ -20,7 +20,7 @@ lazy-object-proxy==1.4.3
 mccabe==0.6.1
 mysql-connector==2.2.9
 mysqlclient==1.4.6
-nltk==3.4.5
+
 numpy==1.17.2
 post==2019.4.13
 public==2019.4.13
