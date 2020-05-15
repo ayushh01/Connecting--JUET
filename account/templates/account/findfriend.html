@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+   <title>Social Website</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <style>
+      html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+   </style>
+   <body class="w3-theme-l5">
+      <!-- Navbar -->
+     <div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a href="{% url 'profile' %}" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Connecting-Juet</a>
+  <a href="{% url 'findfriend' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Find Friend"><i class="fa fa-user"></i></a>
+  <a href="{% url 'notification' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Notifications"><i class="fa fa-bell"></i></a>
+ 
+  {% if user.is_authenticated %}
+    <a href="{% url 'profilehome' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="profile">Profile</a>
+    <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Logout">Logout</a>
+
+  {% else %}
+
+  {% endif %}
+ </div>
+</div>
+      <!-- Navbar on small screens -->
+      <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+         <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+   <a href="{% url 'profilehome' %}" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
+  <a href="{% url 'findfriend' %}" class="w3-bar-item w3-button w3-padding-large">Find Friend</a>
+  <a href="{% url 'notification' %}" class="w3-bar-item w3-button w3-padding-large">Notification</a>
+  <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-padding-large">Logout</a>
+      </div>
+      <!-- Page Container -->
+      <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+         <!-- The Grid -->
+         <div class="w3-row">
+            <!-- Left Column -->
+            <div class="w3-col m3">
+               <!-- Profile -->
+               <div class="w3-card w3-round w3-white">
+                  <div class="w3-container">
+                     <p class="w3-center"><img src="{{ user.profile.image.url }}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                     <h4 class="w3-center">{{ user.username }}</h4>
+                     <hr>
+                     <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Student </p>
+                     <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> JUET </p>
+                     <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>{{ user.data.dob }}</p>
+                  </div>
+               </div>
+               <br>
+               <!-- Accordion -->
+               
+               <!-- Alert Box -->
+               <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+                  <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+                  <i class="fa fa-remove"></i>
+                  </span>
+                  <p><strong>Hey!</strong></p>
+                  <p>Please check your friend request and Notification.</p>
+               </div>
+               <!-- End Left Column -->
+            </div>
+            <!-- Middle Column -->
+            <div class="w3-col m7">
+               <h2 align="w3-center"> Friends </h2>
+               {% for friend in friends %}
+               <div class="w3-container w3-card w3-white w3-round w3-margin">
+                  <br>
+                 
+                  <!-- Done -->
+                  {% if friend.fromUser.username == request.user.username %}
+                   <img src="{{ friend.toUser.profile.image.url }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    <a href="{% url 'profilehomewithpk' pk=friend.toUser.pk %}">
+                       <h1>{{ friend.toUser.username }}</h1>
+                    </a>
+                  {% elif friend.toUser.username == request.user.username %}
+                   <img src="{{ friend.fromUser.profile.image.url }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    <a href="{% url 'profilehomewithpk' pk=friend.fromUser.pk %}">
+                       <h1>{{ friend.fromUser.username }}</h1>
+                    </a>
+                  {% endif %}
+                  {% if friend.isFriendRequest %}
+                    {% if friend.fromUser.username == request.user.username %}
+                     
+                      <a href="{% url 'change_friends' operation='cancel' pk=friend.toUser.id %}">
+                      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">Cancel</button> 
+                      </a> 
+                    
+                   {% else %}
+                      
+                      <a href="{% url 'change_friends' operation='accept' pk=friend.fromUser.id %}">
+                      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">Accept</button> 
+                      </a>
+                      <a href="{% url 'change_friends' operation='reject' pk=friend.fromUser.id %}">
+                      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">Reject</button> 
+                      </a>
+                    
+                    {% endif %}
+                  
+                  <!-- Done -->
+                  {% elif friend.isFriend %}
+                    {% if friend.fromUser.username == request.user.username %}
+                      <a href="{% url 'change_friends' operation='remove' pk=friend.toUser.id %}">
+                      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">Unfriend</button> 
+                      </a>
+                    {% else %}
+                      <a href="{% url 'change_friends' operation='remove' pk=friend.fromUser.id %}">
+                      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">Unfriend</button> 
+                      </a>
+                    {% endif %}
+                  {% endif %}
+               </div>
+               {% endfor %}
+               <!-- Done -->
+               <h2 > Connect with More People</h2>
+               {% for user in users %}
+               {% if not user in friends %}
+               <div class="w3-container w3-card w3-white w3-round w3-margin">
+                  <br>
+                  <img src="{{ user.profile.image.url }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                  <a href="{% url 'profilehomewithpk' pk=user.pk %}">
+                     <h1>{{ user.username }}</h1>
+                  </a>
+                  <a href="{% url 'change_friends' operation='add' pk=user.pk %}">
+                  <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Add-Friend</button>  
+                  </a> 
+               </div>
+               {% endif %}
+               {% endfor %}
+               <!-- End Middle Column -->
+            </div>
+            <!-- Right Column -->
+            <div class="w3-col m2">
+               <div class="w3-card w3-round w3-white w3-center">
+                <div class="w3-container">
+                  <p>Upcoming Events:</p>
+                  <p><strong>P2 and T3</strong></p>
+                  <p>25 Monday 09:00</p>
+                 <p><a href="{% url 'info' %}"></p> <button class="w3-button w3-block w3-theme-l4">Info</button></p></a>
+                </div>
+              </div>
+               <br>
+               <br>
+               <br>
+               <!-- End Right Column -->
+            </div>
+            <!-- End Grid -->
+         </div>
+         <!-- End Page Container -->
+      </div>
+      <br>
+      <!-- Footer -->
+      <footer class="w3-container w3-theme-d3 w3-padding-16">
+         <h5>Connecting juet 2019</h5>
+      </footer>
+      <footer class="w3-container w3-theme-d5">
+         <p>Made By <a href="https://www.juet.ac.in" target="_blank">  JUET</a></p>
+      </footer>
+      <script>
+         // Accordion
+         function myFunction(id) {
+             var x = document.getElementById(id);
+             if (x.className.indexOf("w3-show") == -1) {
+                 x.className += " w3-show";
+                 x.previousElementSibling.className += " w3-theme-d1";
+             } else { 
+                 x.className = x.className.replace("w3-show", "");
+                 x.previousElementSibling.className = 
+                 x.previousElementSibling.className.replace(" w3-theme-d1", "");
+             }
+         }
+         // Used to toggle the menu on smaller screens when clicking on the menu button
+         function openNav() {
+             var x = document.getElementById("navDemo");
+             if (x.className.indexOf("w3-show") == -1) {
+                 x.className += " w3-show";
+             } else { 
+                 x.className = x.className.replace(" w3-show", "");
+             }
+         }
+      </script>
+   </body>
+</html>
