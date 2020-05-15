@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['conjuet.herokuapp.com']
   # During development only
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 # Application definition
 
 INSTALLED_APPS = [
@@ -127,6 +127,12 @@ MEDIA_URL  = '/media/'
 
 LOGIN_REDIRECT_URL= 'profile/'
 
-EMAIL_HOST='localhost'
-EMAIL_PORT = 1025
 django_heroku.settings(locals())
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'srivastavaayush.alld@gmail.com'
+EMAIL_HOST_PASSWORD = 'uhaevncgcvkgkycv'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'ConnectingJUET Team <noreply@connjuet.com>'
