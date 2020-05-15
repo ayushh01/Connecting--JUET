@@ -1,0 +1,94 @@
+remote:        Collecting scipy==1.3.1
+remote:          Downloading scipy-1.3.1-cp36-cp36m-manylinux1_x86_64.whl (25.2
+MB)
+remote:        Collecting six==1.12.0
+remote:          Downloading six-1.12.0-py2.py3-none-any.whl (10 kB)
+remote:        Collecting sqlparse==0.3.0
+remote:          Downloading sqlparse-0.3.0-py2.py3-none-any.whl (39 kB)
+remote:        Collecting typed-ast==1.4.1
+remote:          Downloading typed_ast-1.4.1-cp36-cp36m-manylinux1_x86_64.whl (7
+37 kB)
+remote:        Collecting uritemplate==3.0.0
+remote:          Downloading uritemplate-3.0.0-py2.py3-none-any.whl (10 kB)
+remote:        Collecting urllib3==1.25.8
+remote:          Downloading urllib3-1.25.8-py2.py3-none-any.whl (125 kB)
+remote:        Collecting virtualenv==16.6.0
+remote:          Downloading virtualenv-16.6.0-py2.py3-none-any.whl (2.0 MB)
+remote:        Collecting virtualenvwrapper-win==1.2.5
+remote:          Downloading virtualenvwrapper-win-1.2.5.tar.gz (21 kB)
+remote:        Collecting wrapt==1.11.2
+remote:          Downloading wrapt-1.11.2.tar.gz (27 kB)
+remote:        Building wheels for collected packages: django-friendship, django
+-simple-friends, get, google-api-python-client, mysql-connector, mysqlclient, po
+st, public, query-string, request, virtualenvwrapper-win, wrapt
+remote:          Building wheel for django-friendship (setup.py): started
+remote:          Building wheel for django-friendship (setup.py): finished with
+status 'done'
+remote:          Created wheel for django-friendship: filename=django_friendship
+-1.8.1-py3-none-any.whl size=35558 sha256=8b5452fa21559dc6c9afdb8103c671d3471072
+49dfc17be13caa3f36c71b9420
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-qpehtsgw/wheels
+/ad/85/c3/4672a4f8fa7ff0fcf3af766e650bdb89af71d73c41e21b1043
+remote:          Building wheel for django-simple-friends (setup.py): started
+remote:          Building wheel for django-simple-friends (setup.py): finished w
+ith status 'done'
+remote:          Created wheel for django-simple-friends: filename=django_simple
+_friends-1.1.1-py3-none-any.whl size=22633 sha256=5a485b69dc13c3b69e262d74a543a2
+5bab6b8586248a0d1095e7ef2295b141bb
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-qpehtsgw/wheels
+/58/2d/b5/4b3c04e47fbab47968afe91111623a86b8b83eb3062797f47c
+remote:          Building wheel for get (setup.py): started
+remote:          Building wheel for get (setup.py): finished with status 'done'
+remote:          Created wheel for get: filename=get-2019.4.13-py3-none-any.whl
+size=1692 sha256=5586348be0566c04b0210b41aed42d013e375178727e624950a8c423a6f5098
+6
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-qpehtsgw/wheels
+/29/c6/85/3f005e9dfe2e85245fbb18372175c5d0ab07ae82ee7789eac0
+remote:          Building wheel for google-api-python-client (setup.py): started
+
+remote:          Building wheel for google-api-python-client (setup.py): finishe
+d with status 'done'
+remote:          Created wheel for google-api-python-client: filename=google_api
+_python_client-1.7.11-py3-none-any.whl size=56530 sha256=ee7f12c4e929db335f7f5e0
+cb1ad05731ce07fb4b0614d6c7a021ac957c415a9
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-qpehtsgw/wheels
+/a8/5e/38/112b03a16c84278e7ca88f7cfab65457abf47fd37faecd8c9d
+remote:          Building wheel for mysql-connector (setup.py): started
+remote:          Building wheel for mysql-connector (setup.py): finished with st
+atus 'done'
+remote:          Created wheel for mysql-connector: filename=mysql_connector-2.2
+.9-cp36-cp36m-linux_x86_64.whl size=247949 sha256=3bc9d8d1b2dfa19b6b4351a50e72f3
+d3d75988bc2fcedb9238d6d41558dc9c85
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-qpehtsgw/wheels
+/23/27/3e/72be437e6a950b8972728d2a62935ae7cd0d7c3c251fb2e737
+remote:          Building wheel for mysqlclient (setup.py): started
+remote:          Building wheel for mysqlclient (setup.py): finished with status
+ 'done'
+remote:          Created wheel for mysqlclient: filename=mysqlclient-1.4.6-cp36-
+cp36m-linux_x86_64.whl size=99520 sha256=079b4140e2f31ec618cf27896e53e08a5379cd0
+5751341a89b4644f9c611645e
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-qpehtsgw/wheels
+/c6/8c/80/527c233e7cb169f828b7168ebeab0fc5206d09b0fa133472fb
+remote:          Building wheel for post (setup.py): started
+remote:          Building wheel for post (setup.py): finished with status 'done'
+
+remote:          Created wheel for post: filename=post-2019.4.13-py3-none-any.wh
+l size=1659 sha256=48be3939fca74b1e9941c2271b46365e8d8e3e44bf32c5c89772bde09eaef
+dc2
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-qpehtsgw/wheels
+/f7/68/95/5971b6d697c4fc519d4cc82efe87878634e038c665a5d7d343
+remote:          Building wheel for public (setup.py): started
+remote:          Building wheel for public (setup.py): finished with status 'don
+e'
+remote:          Created wheel for public: filename=public-2019.4.13-py3-none-an
+y.whl size=2534 sha256=4791f0e7e9d0fdcf69c2bd2080b248c7c0e863e219195d17835cb4fbd
+e954e25
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-qpehtsgw/wheels
+/7a/ff/ff/edaeea298e75cbc3bc7b3839c2e30951767d2b09914917b145
+remote:          Building wheel for query-string (setup.py): started
+remote:          Building wheel for query-string (setup.py): finished with statu
+s 'done'
+remote:          Created wheel for query-string: filename=query_string-2019.4.13
+-py3-none-any.whl size=2048 sha256=6b84ce54e9d8f0ea0c20036537741f5fa4675aedd7279
+
+'95823c3d5e4215e9544503627aed1fe4a6c5c97758c70241'
