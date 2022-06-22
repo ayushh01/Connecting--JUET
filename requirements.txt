@@ -23,7 +23,7 @@ mccabe==0.6.1
 mysql-connector==2.2.9
 mysqlclient==1.4.6
 
-numpy==1.17.2
+numpy==1.22.0
 Pillow==7.1.2
 post==2019.4.13
 psycopg2==2.8.5
